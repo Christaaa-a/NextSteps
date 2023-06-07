@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Academic Page</title>
+    <style>
+        .subject-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .subject-list li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function updateEnterMarks() {
+            var selectedSubjects = document.querySelectorAll('input[name="subject"]:checked');
+            var marksForm = document.getElementById('marks-form');
+            marksForm.innerHTML = ""; // Clear the existing form content
+            
+            for (var i = 0; i < selectedSubjects.length; i++) {
+                var subject = selectedSubjects[i].value;
+                var label = document.createElement("label");
+                label.for = subject;
+                label.textContent = subject + ":";
+                
+                var input = document.createElement("input");
+                input.type = "number";
+                input.id = subject.toLowerCase();
+                input.name = subject.toLowerCase();
+                
+                marksForm.appendChild(label);
+                marksForm.appendChild(input);
+                marksForm.appendChild(document.createElement("br"));
+            }
+        }
+        
+        window.addEventListener('DOMContentLoaded', function() {
+            var subjectCheckboxes = document.querySelectorAll('input[name="subject"]');
+            
+            for (var i = 0; i < subjectCheckboxes.length; i++) {
+                subjectCheckboxes[i].addEventListener('change', updateEnterMarks);
+            }
+        });
+    </script>
+</head>
+<body>
+    <h1>Academic Page</h1>
+    
+    <h2>Select Subjects:</h2>
+    <ul class="subject-list">
+        <li><input type="checkbox" name="subject" value="Math"> Math</li>
+        <li><input type="checkbox" name="subject" value="Science"> Science</li>
+        <li><input type="checkbox" name="subject" value="English"> English</li>
+        <!-- Add more subjects here -->
+    </ul>
+    
+    <h2>Enter Marks:</h2>
+    <div id="marks-form"></div>
+</body>
+</html>
