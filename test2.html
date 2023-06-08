@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Academic Page</title>
+    <style>
+        .subject-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .subject-list li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        var careerDomains = {
+            engineering: {
+                math: 3,
+                physics: 2,
+                english: 1,
+                biology: 1,
+                "computer science": 3,
+                chemistry: 2,
+                "applied mathematics": 2,
+                "computer applications": 1,
+            },
+            medical: {
+                physics: 1,
+                chemistry: 2,
+                biology: 3,
+                english: 1,
+                mathematics: 1,
+                biotechnology: 1,
+                psychology: 1,
+                sociology: 1
+            },
+            law: {
+                english: 3,
+                "political science": 3,
+                history: 2,
+                economics: 1,
+                sociology: 1,
+                psychology: 1,
+                mathematics: 1,
+            },
+            architecture: {
+                mathematics: 2,
+                physics: 2,
+                chemistry: 2,
+                english: 1,
+                "computer science": 1,
+                art: 3,
+                history: 1,
+                geography: 2,
+            },
+            sports: {
+                "physical education": 3,
+                biology: 2,
+                physics: 2,
+                english: 1,
+                psychology: 1,
+                mathematics: 1
+            },
+            literature: {
+                english: 3,
+                history: 2,
+                psychology: 2,
+                sociology: 1,
+                economics: 1,
+                mathematics: 1
+            },
+            commerce: {
+                mathematics: 3,
+                economics: 2,
+                accountancy: 2,
+                "business studies": 2,
+                english: 1,
+                "computer science": 1,
+                psychology: 1,
+                sociology: 1
+            },
+            entertainment: {
+                english: 2,
+                art: 2,
+                music: 2,
+                drama: 2,
+                dance: 2,
+                history: 1,
+                psychology: 1,
+                sociology: 1
+            },
+            management: {
+                "business studies": 3,
+                economics: 2,
+                mathematics: 2,
+                english: 1,
+                "computer science": 1,
+                psychology: 1,
+                sociology: 1
+            }
+        };
+
+        function calculateCareerDomain() {
+            var selectedSubjects = document.querySelectorAll('input[name="subject"]:checked');
+            var marks = {};
+
+            // Get the entered marks for each subject
+            for (var i = 0; i < selectedSubjects.length; i++) {
+                var subject = selectedSubjects[i].value;
+                var marksInput = document.getElementById(subject.toLowerCase());
+
+                var marksValue = parseInt(marksInput.value);
+                
+                if (marksValue < 0 || marksValue > 100 || isNaN(marksValue)) {
+                    alert("Please enter a valid mark between 0 and 100.");
+                    return;
+                }
+
+                marks[subject.toLowerCase()] = marksValue;
+            }
+
+            var domainScores = {};
+
+            // Calculate the scores for each career domain based on the marks
+            for (var domain in careerDomains) {
+                var domainScore = 0;
+                for (var subject in careerDomains[domain]) {
+                    if (subject in marks) {
+                        var subjectWeight = careerDomains[domain][subject];
+                        var subjectMarks = marks[subject];
+                        domainScore += (subjectMarks / 100) * subjectWeight;
+                    }
+                }
+                domainScores[domain] = Math.ceil(domainScore);
+            }
+
+            // Find the career domain with the highest score
+            var maxScore = 0;
+            var maxDomain = "";
+            for (var domain in domainScores) {
+                if (domainScores[domain] > maxScore) {
+                    maxScore = domainScores[domain];
+                    maxDomain = domain;
+                }
+            }
+
+            // Display the highest scoring career domain
+            var careerDomainResult = document.getElementById('career-domain-result');
+            careerDomainResult.textContent = maxDomain;
+            careerDomainResult.style.display = "block";
+
+            // Display the career domain points for all career domains
+            var careerDomainPoints = document.getElementById('career-domain-points');
+            careerDomainPoints.innerHTML = "";
+            for (var domain in domainScores) {
+                var domainPoints = document.createElement('p');
+                domainPoints.textContent = domain + ": " + domainScores[domain] + " points";
+                careerDomainPoints.appendChild(domainPoints);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Academic Page</h1>
+    
+    <h2>Select Subjects:</h2>
+    <ul class="subject-list">
+        <li><input type="checkbox" name="subject" value="Accountancy"> Accountancy</li>
+        <li><input type="checkbox" name="subject" value="English"> English</li>
+        <li><input type="checkbox" name="subject" value="Biology"> Biology</li>
+        <li><input type="checkbox" name="subject" value="Biotechnology"> Biotechnology</li>
+        <li><input type="checkbox" name="subject" value="Business Studies"> Business Studies</li>
+        <li><input type="checkbox" name="subject" value="Chemistry"> Chemistry</li>
+        <li><input type="checkbox" name="subject" value="Computer Science"> Computer Science</li>
+        <li><input type="checkbox" name="subject" value="Economics"> Economics</li>
+        <li><input type="checkbox" name="subject" value="Geography"> Geography</li>
+        <li><input type="checkbox" name="subject" value="History"> History</li>
+        <li><input type="checkbox" name="subject" value="Informatics Practices"> Informatics Practices</li>
+        <li><input type="checkbox" name="subject" value="Mathematics"> Mathematics</li>
+        <li><input type="checkbox" name="subject" value="Applied Mathematics"> Applied Mathematics</li>
+        <li><input type="checkbox" name="subject" value="Physics"> Physics</li>
+        <li><input type="checkbox" name="subject" value="Political Science"> Political Science</li>
+        <li><input type="checkbox" name="subject" value="Psychology"> Psychology</li>
+        <li><input type="checkbox" name="subject" value="Sociology"> Sociology</li>
+    </ul>
+    
+    <h2>Enter Marks:</h2>
+    <div id="marks-form"></div>
+    <button onclick="calculateCareerDomain()">Submit</button>
+
+    <h2>Career Domain:</h2>
+    <p id="career-domain-result" style="display: none;"></p>
+
+    <h2>Career Domain Points:</h2>
+    <div id="career-domain-points"></div>
+
+    <script>
+        // Generate the marks form based on the selected subjects
+        var subjectCheckboxes = document.querySelectorAll('input[name="subject"]');
+        var marksForm = document.getElementById('marks-form');
+
+        for (var i = 0; i < subjectCheckboxes.length; i++) {
+            subjectCheckboxes[i].addEventListener('change', function () {
+                marksForm.innerHTML = "";
+
+                for (var j = 0; j < subjectCheckboxes.length; j++) {
+                    if (subjectCheckboxes[j].checked) {
+                        var subject = subjectCheckboxes[j].value;
+                        var subjectLabel = document.createElement('label');
+                        subjectLabel.textContent = subject + " Marks: ";
+                        var subjectInput = document.createElement('input');
+                        subjectInput.type = "number";
+                        subjectInput.id = subject.toLowerCase();
+                        subjectInput.min = 0;
+                        subjectInput.max = 100;
+
+                        marksForm.appendChild(subjectLabel);
+                        marksForm.appendChild(subjectInput);
+                        marksForm.appendChild(document.createElement('br'));
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
