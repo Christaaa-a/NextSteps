@@ -1,0 +1,267 @@
+/* styles.css */
+/* Container styles */
+.side-bar
+{
+    position: absolute;
+    width: 250px;
+    height: 1000px;
+    left: -0.5px;
+    top: -1px;
+    
+    background:#BEC9F7;
+}
+
+/* Logo */
+.logo_side{
+    position: absolute;
+    width: 50px;
+    height: 10px;
+    left: 0px;
+    top: -39.22px;
+}
+
+/* Academics */
+.acad{
+    position: absolute;
+    width: 250px;
+    height: 225px;
+    left: -5px;
+    top: 150px;
+    
+    background: #BEC9F7;
+    border-radius: 0px;
+}
+.bargraph{
+    position: absolute;
+    width: 10px;
+    height: 20px;
+    left: 60px;
+    top: 20px;
+    }
+    
+.academics_t{
+    position: absolute;
+    width: 241px;
+    height: 77px;
+    left: 10px;
+    top: 120px;
+    
+    font-family: 'Karma';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 77px;
+    text-align: center;
+    
+    color: #000000;
+}
+
+/* Personality */
+.personality
+{
+    position: absolute;
+    width: 240px;
+    height: 150px;
+    left: 2.34px;
+    top: 350px;
+    
+    background: #BEC9F7;
+    border-radius: 50px;
+} 
+
+.personality_i
+{
+    position: absolute;
+    width: 199.12px;
+    height: 194.5px;
+    left: 30px;
+    top: 20px;
+}
+
+.personality_t{
+    position: absolute;
+    width: 241px;
+    height: 77px;
+    left: 10px;
+    top: 170px;
+    
+    font-family: 'Karma';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 77px;
+    text-align: center;
+    
+    color: #FFFFFF;
+}
+
+/* Competency */
+.competency{
+position: absolute;
+width: 200px;
+height: 200px;
+left: -4.34px;
+top: 600px;
+
+background: #BEC9F7;
+border-radius: 50px;
+}
+
+.competency_i{
+position: absolute;
+width: 158px;
+height: 138.62px;
+left: 50px;
+top: 80px;
+}
+
+.competency_t
+{
+position: absolute;
+width: 282px;
+height: 77px;
+left: -10px;
+top: 195px;
+
+font-family: 'Karma';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 77px;
+text-align: center;
+
+color: #FFFFFF;
+}
+
+/* Interest */
+.interest{
+    position: absolute;
+    width: 254px;
+    height: 256px;
+    left: -4.5px;
+    top: 900px;
+    
+    background: #BEC9F7;
+    border-radius: 50px;
+}
+
+.interest_i{
+position: absolute;
+width: 150px;
+height: 100px;
+left: 30px;
+top: 5px;
+}
+
+.interest_t{
+position: absolute;
+width: 417px;
+height: 77px;
+left: -70px;
+top: 130px;
+
+font-family: 'Karma';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 77px;
+text-align: center;
+
+color: #FFFFFF;
+}
+.container {
+    position: absolute;
+    width: 800px;
+    height: 1000px;
+    left: 300px;
+    top: 5px;
+}
+
+/* Question styles */
+.question {
+position: absolute;
+width: 808px;
+height: 50px;
+left: 700px;
+top: -10px;
+font-family: 'Lucida Calligraphy';
+font-style: italic;
+font-weight: 400;
+font-size: 50px;
+line-height: 98px;
+}
+
+/* Interests container styles */
+.interests-container {
+  display: flex;
+  flex-wrap:wrap;
+  margin-bottom: 30px;
+}
+
+/* Individual interest styles */
+
+.coding{
+position: absolute;
+width: 459px;
+height: 463px;
+left: 100px;
+top: 150px;
+}
+
+.gaming{
+position: absolute;
+width: 459px;
+height: 463px;
+left: 700px;
+top: 150px;
+}
+
+.design{
+position: absolute;
+width: 459px;
+height: 463px;
+left: 1300px;
+top: 150px;
+}
+
+.invest{
+position: absolute;
+width: 459px;
+height: 463px;
+left: 100px;
+top: 650px;
+}
+
+.lit{
+position: absolute;
+width: 459px;
+height: 463px;
+left: 700px;
+top: 650px;
+}
+
+.photo{
+position: absolute;
+width: 459px;
+height: 463px;
+left: 1300px;
+top: 650px;
+}
+
+/* Submit button styles */
+.submit-button {
+position: absolute;
+left: 900px;
+top: 1200px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3C4973;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #333;
+}
